@@ -1,8 +1,9 @@
+// old file not working
 import { render, screen } from '@testing-library/react';
-import { App } from './App';
+import App from './App';
 
-test('renders home with title', () => {
+test('renders learn react link', () => {
   render(<App />);
-  const titleElement = screen.getByText(/Job Tracker/i);
-  expect(titleElement).toBeInTheDocument();
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
 });

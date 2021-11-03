@@ -1,11 +1,13 @@
-import { Grommet } from 'grommet';
-import { Routes } from './routes';
-import { brandColor } from './styles/constants';
+import { Box, Grommet, Heading } from 'grommet';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ApplicationNew } from './components/ApplicationNew';
+import { ApplicationShow } from './components/ApplicationShow';
+import { Home } from './components/Home';
 
 const theme = {
   global: {
    colors: {
-     brand: brandColor,
+     brand: '#228BE6',
    },
     font: {
       family: 'Roboto',
@@ -17,6 +19,21 @@ const theme = {
 
 export const App = () => (
   <Grommet theme={ theme } full>
-    <Routes />
+    <BrowserRouter>
+      <Box align="center">
+        <Box as="header" fill="horizontal" background="brand" align="center">
+          <Box width="large">
+            <Heading color="white" level="1">Job Tracker</Heading>
+          </Box>
+        </Box>
+        <Box width="large" pad={ { top: 'medium' } }>
+          <Switch>
+            <Route exact path="/" component={ Home } />
+            <Route exact path="/applications/new" component={ ApplicationNew } />
+            <Route exact path="/applications/:slug" component={ ApplicationShow } />
+          </Switch>
+        </Box>
+      </Box>
+    </BrowserRouter>
   </Grommet>
-)
+);

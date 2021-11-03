@@ -16,8 +16,6 @@ type Options = {
   onCompleted?: () => void,
 };
 
-const baseUrl = 'http://localhost:8000';
-
 // Following the Apollo client pattern
 // https://www.apollographql.com/docs/react/api/react/hooks/#useMutation
 // We centralize the business logic of baseUrl, managing errors, loading states, etc
@@ -28,7 +26,7 @@ export const useAPI = <R>(path: string, { method, onCompleted }: Options = { met
 
   const makeRequest = useCallback(async (body?: any) => {
     setLoading(true);
-    fetch(`${baseUrl}${path}`, {
+    fetch(`http://localhost:8000${path}`, {
       method: method || 'GET',
       headers: new Headers({
         'Content-type': 'application/json',
@@ -50,13 +48,7 @@ export const useAPI = <R>(path: string, { method, onCompleted }: Options = { met
           onCompleted();
         }
       })
-      .catch((error) => {
-        // Maybe also use a central logger for frontend errors
-        console.error(`Error querying ${path}`);
-        console.error(error);
-        setError(`Error making request to ${path}`);
-        setLoading(false);
-      })
+      // don't catch errors
   }, [path, method, onCompleted]);
 
   return [

@@ -32,14 +32,12 @@ export const ApplicationStatuSelector = (props: Props) => {
 
   useEffect(() => {
     getStatuses();
-    // Need to refectch statuses in case a new one has been created
   }, [props.status.id, getStatuses])
 
   const searchOrCreateStatus = (text: string) => {
     const len = options.length;
     let newOptions = [...options];
     if (options[len - 1].content.includes(prefix)) {
-      // remove Create option before adding an updated one
       newOptions.pop();
     }
     newOptions.push({
@@ -47,13 +45,11 @@ export const ApplicationStatuSelector = (props: Props) => {
       text,
       id: newStatusId,
     });
-    // Filter by `text`
     setOptions(newOptions.filter((option) => option.content.indexOf(text) > -1));
   }
 
   const changeStatus = async ({ status: newStatusData }: FormState) => {
     if (newStatusData.id === newStatusId) {
-      // We need to get the text without the "Create ..."
       props.onChangeStatus({
         id: newStatusId,
         content: newStatusData.text!,

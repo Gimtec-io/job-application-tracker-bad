@@ -1,6 +1,6 @@
 import { Box } from 'grommet';
-import { Comment as CommentType } from '../../../models';
-import { sortNewestByCreatedAt } from '../../../utils/sortNewestByCreatedAt';
+import { Comment as CommentType } from '../../../../models';
+import { sortNewestByCreatedAt } from '../../../../utils/sortNewestByCreatedAt';
 import { Comment } from './Comment';
 
 type Props = {

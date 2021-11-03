@@ -1,12 +1,12 @@
 import { Box, Heading } from 'grommet';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { AnchorLink } from '../../components/AnchorLink';
+import { AnchorLink } from '../AnchorLink';
 import { useAPI } from '../../hooks/useQuery';
 import { Application, ApplicationStatus } from '../../models';
 import { ApplicationDetails } from './components/ApplicationDetails';
-import { CommentsList } from './components/CommentsList';
-import { CommentNew } from './components/CommentNew';
+import { CommentsList } from './components/comments/CommentsList';
+import { CommentNew } from './components/comments/CommentNew';
 
 type Params = {
   slug: string;

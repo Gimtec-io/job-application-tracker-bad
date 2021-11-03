@@ -1,22 +1,18 @@
-export type ApplicationStatusId = string;
-
 export type ApplicationStatus = {
-  id: ApplicationStatusId;
+  // not using specific types for ids
+  id: string;
   content: string;
 }
 
-export type CommentId = string;
-export type ApplicationId = string;
-
 export type Comment = {
-  id: CommentId;
+  id: string;
   content: string;
   createdAt: string;
-  applicationId: ApplicationId;
+  applicationId: string;
 }
 
 export type Application = {
-  id: ApplicationId;
+  id: string;
   company: string;
   position: string;
   link?: string;

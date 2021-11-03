@@ -1,6 +1,7 @@
+// unused file
 import { List, Text } from 'grommet';
 import { useHistory } from 'react-router';
-import { Application } from '../../../models';
+import { Application } from '../models';
 
 type Props = {
   applications: Application[];
