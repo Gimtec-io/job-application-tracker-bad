@@ -2,7 +2,7 @@
 const faker = require('faker');
 const fs = require('fs');
 const path = require('path');
-const { slugify } = require('../utils');
+const { slugify } = require('../slugify');
 
 // Population variables
 const applicationsCount = 5;
@@ -83,7 +83,7 @@ const writeFile = (data, filename) => {
 const populate = () => {
   const data = createData();
   // The '.' at the beginning is important for `fs.writeFileSync`
-  writeFile(data, './src/libraries/db/data.json');
+  writeFile(data, './src/db/data.json');
 };
 
 populate();

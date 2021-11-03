@@ -16,15 +16,12 @@ type Options = {
   onCompleted?: () => void,
 };
 
-// Following the Apollo client pattern
-// https://www.apollographql.com/docs/react/api/react/hooks/#useMutation
-// We centralize the business logic of baseUrl, managing errors, loading states, etc
 export const useAPI = <R>(path: string, { method, onCompleted }: Options = { method: 'GET' }): ReturnValue<R> => {
   const [data, setData] = useState<R | undefined>();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>();
 
-  const makeRequest = useCallback(async (body?: any) => {
+  const makeRequest = useCallback((body?: any) => {
     setLoading(true);
     fetch(`http://localhost:8000${path}`, {
       method: method || 'GET',

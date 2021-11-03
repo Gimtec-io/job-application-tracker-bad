@@ -2,7 +2,7 @@ const fs = require('fs');
 const data = require('./data.json');
 
 const saveData = (newData) => {
-  fs.writeFileSync('./src/libraries/db/data.json', JSON.stringify(newData));
+  fs.writeFileSync('./src/db/data.json', JSON.stringify(newData));
 };
 
 const applications = {

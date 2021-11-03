@@ -1,14 +1,14 @@
 const { v4 } = require('uuid');
-const db = require('../../libraries/db');
+const db = require('./db');
 
-// Static methods should return a Status instance
 class Status {
   static async getAll() {
     const statusesData = await db.statuses.getAll();
     return statusesData.map((statusData) => new Status(statusData));
   }
 
-  static async getById(id) {
+  // inconsistent naming
+  static async findById(id) {
     const statusData = await db.statuses.getById(id);
     if (statusData) {
       return new Status(statusData);
@@ -34,8 +34,6 @@ class Status {
     this.content = content;
   }
 
-  // used by JSON.stringify to serialize objects
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#description
   toJSON() {
     return {
       id: this.id,

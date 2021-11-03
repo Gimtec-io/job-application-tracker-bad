@@ -1,7 +1,7 @@
 const { v4 } = require('uuid');
-const db = require('../../libraries/db');
+const db = require('./db');
+const { CustomError } = require('./CustomError');
 
-// Static methods should return a Comment instance
 class Comment {
   static async getByApplicationId(applicationId) {
     const commentsData = await db.comments.getByApplicationId(applicationId);
@@ -9,11 +9,7 @@ class Comment {
   }
 
   static async create({ content, applicationId }) {
-    if (!content || !applicationId) {
-      // Status 422: Unprocessable Entity
-      // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422
-      throw new CustomError('Content and applicationId are required', 422);
-    }
+    // no checks of incoming data
     const newCommentData = {
       content,
       applicationId,
@@ -31,8 +27,6 @@ class Comment {
     this.createdAt = createdAt;
   }
 
-  // used by JSON.stringify to serialize objects
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#description
   toJSON() {
     return {
       id: this.id,
