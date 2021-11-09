@@ -53,8 +53,8 @@ class Application {
     return newSlug;
   }
 
+  // not used
   static async create({ company, position, link, description, createdAt }) {
-    // no checks of incoming data
     try {
       const defaultStatus = await Status.defaultStatus();
       const slug = await Application.createNewSlug(company, position);
